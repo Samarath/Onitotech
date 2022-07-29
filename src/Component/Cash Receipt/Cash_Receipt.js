@@ -53,12 +53,12 @@ const Cash_Receipt = () => {
 
         <label htmlFor="field1">
             <span>Date <span className="required">*</span></span>
-            <input type="text" className="input-field date" name="field1" placeholder='Enter Date'/>
+            <input type="text" className="input-field date" name="field1" placeholder='Enter Date' required/>
         </label>
 
         <label htmlFor="field2">
             <span>Amount <span className="required">*</span></span>
-            <input type="text" className="input-field full" name="field2" placeholder='Enter Amount'/>
+            <input type="text" className="input-field full" name="field2" placeholder='Enter Amount' required/>
         </label>
 
 
@@ -72,12 +72,12 @@ const Cash_Receipt = () => {
 
         <label htmlFor="field4">
             <span>Remark </span>
-            <input type='text' name="field4" className="input-field full" placeholder='Enter Remark'/>
+            <input type='text' name="field4" className="input-field full" placeholder='Enter Remark' required/>
         </label>
 
         <label className='btn'>
-            <span> </span><input type="button" value="Cancel" onClick={cancelBtn}/>
-            <span> </span><input type="submit" value="Submit" />
+            <span> </span><input type="button" value="CANCEL" onClick={cancelBtn}/>
+            <span> </span><input type="submit" value="SUBMIT" />
         </label>
 </form>
 </div>
