@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useTable } from 'react-table';
-
+import './Table.css';
  
 
  function Table(props) {
@@ -12,34 +12,15 @@ import { useTable } from 'react-table';
             col4: item[3],
         }
     })    
-    // console.log(mainData)
     const data = React.useMemo(
-        () => 
-        //     [
-        //   {
-        //     col1: 'Minsk',
-        //     col2: '27',
-        //     col3: 'rain',
-        //   },
-        //   {
-        //     col1: 'Vilnius',
-        //     col2: '30',
-        //     col3: 'rain',
-        //   },
-        //   {
-        //     col1: 'London',
-        //     col2: '23',
-        //     col3: 'rain',
-        //   },
-        // ],
-        mainData,
+        () => mainData,
         [mainData]
     )
     const columns = React.useMemo(
         () => [
           {
             Header: 'Date',
-            accessor: 'col1', // accessor is the "key" in the data
+            accessor: 'col1', 
           },
           {
             Header: 'Amount',
@@ -47,11 +28,11 @@ import { useTable } from 'react-table';
           },
           {
             Header: 'Payment Method',
-            accessor: 'col3', // accessor is the "key" in the data
-          },
+            accessor: 'col3', 
+           },
           {
             Header: 'Remark',
-            accessor: 'col4', // accessor is the "key" in the data
+            accessor: 'col4', 
           }
         ],
         []
@@ -69,82 +50,43 @@ import { useTable } from 'react-table';
 
         <thead>
    
-          {// Loop over the header rows
+          {
    
           headerGroups.map(headerGroup => (
-   
-            // Apply the header row props
-   
             <tr {...headerGroup.getHeaderGroupProps()}>
-   
-              {// Loop over the headers in each row
-   
+              {
               headerGroup.headers.map(column => (
-   
-                // Apply the header cell props
-   
-                <th {...column.getHeaderProps()}>
-   
-                  {// Render the header
-   
+                <th {...column.getHeaderProps()}>   
+                  {
                   column.render('Header')}
-   
                 </th>
-   
               ))}
-   
             </tr>
-   
           ))}
-   
         </thead>
-   
-        {/* Apply the table body props */}
    
         <tbody {...getTableBodyProps()}>
    
-          {// Loop over the table rows
-   
+          {
           rows.map(row => {
-   
-            // Prepare the row for display
-   
             prepareRow(row)
-   
             return (
+                 <tr {...row.getRowProps()}>
    
-              // Apply the row props
-   
-              <tr {...row.getRowProps()}>
-   
-                {// Loop over the rows cells
-   
+                {
                 row.cells.map(cell => {
-   
-                  // Apply the cell props
-   
                   return (
-   
                     <td {...cell.getCellProps()}>
-   
-                      {// Render the cell contents
-   
+                      {
                       cell.render('Cell')}
-   
                     </td>
-   
                   )
    
                 })}
-   
               </tr>
-   
             )
-   
           })}
-   
         </tbody>
-   
       </table>
     )
 
