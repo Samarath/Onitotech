@@ -1,11 +1,19 @@
 import './Cash_Receipt.css'
 
 const Cash_Receipt = () => {
+
+    const handleSubmit = () => {
+        console.log('submited')
+    }
+
     return(
+        <div className='main-div'>
+
+        
         <div className="form-style-2">
           <div className="form-style-2-heading">Receipt Details</div>
 
-         <form action="" method="post">
+         <form onSubmit={handleSubmit}>
 
         <label htmlFor="field1">
             <span>Date <span className="required">*</span></span>
@@ -36,6 +44,7 @@ const Cash_Receipt = () => {
             <span> </span><input type="submit" value="Submit" />
         </label>
 </form>
+</div>
 </div>
     )
 }
