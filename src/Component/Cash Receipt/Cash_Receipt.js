@@ -2,6 +2,8 @@ import './Cash_Receipt.css'
 
 import {useState} from 'react'
 
+import Table from '../Table/Table';
+
 const Cash_Receipt = () => {
 
     const [receipts, setReceipts] = useState([]);
@@ -14,11 +16,12 @@ const Cash_Receipt = () => {
         const amount = e.target.field2.value;
         const paymentMode = e.target.field3.value;
         const remark = e.target.field4.value;
-
+        
         const tableData = [date, amount, paymentMode, remark];
         setReceipts([...receipts, tableData]);
         console.log(receipts);
         cancelBtn();
+        showTable();
     }
 
     const cancelBtn = () => {
@@ -30,7 +33,16 @@ const Cash_Receipt = () => {
         }
     }
 
+    const showTable = () => {
+        // console.log('table table')
+        if(receipts.length !== 0){
+            return <Table data={receipts}/>
+        }
+        
+    }
+
     return(
+       <> 
         <div className='main-div'>
 
         
@@ -70,6 +82,8 @@ const Cash_Receipt = () => {
 </form>
 </div>
 </div>
+    {showTable()}
+</>
     )
 }
 
