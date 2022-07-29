@@ -12,16 +12,19 @@ const Cash_Receipt = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormData(e);
-        const date = e.target.field1.value;
+        let date = e.target.field1.value;
         const amount = e.target.field2.value;
         const paymentMode = e.target.field3.value;
         const remark = e.target.field4.value;
         
         const tableData = [date, amount, paymentMode, remark];
         setReceipts([...receipts, tableData]);
-        console.log(receipts);
-        cancelBtn();
         showTable();
+
+        e.target.field1.value= ''
+        e.target.field2.value= ''
+        e.target.field3.value= 'Cash'
+        e.target.field4.value= ''
     }
 
     const cancelBtn = () => {
@@ -34,7 +37,6 @@ const Cash_Receipt = () => {
     }
 
     const showTable = () => {
-        // console.log('table table')
         if(receipts.length !== 0){
             return <Table data={receipts}/>
         }
@@ -72,7 +74,7 @@ const Cash_Receipt = () => {
 
         <label htmlFor="field4">
             <span>Remark </span>
-            <input type='text' name="field4" className="input-field full" placeholder='Enter Remark' required/>
+            <input type='text' name="field4" className="input-field full" placeholder='Enter Remark'/>
         </label>
 
         <label className='btn'>
